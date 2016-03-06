@@ -1,46 +1,11 @@
 class Hero(object):
 
-    def moves(self):
-        pass
-
-    def moveRight(self, posisjonX, posisjonY, lengde, boardSize):
-        print("Trying to move %d from (%d, %d)" % (lengde, posisjonX, posisjonY))
-        if not (posisjonX + lengde) > boardSize:
-            posisjonX = (posisjonX + lengde)
-        return (posisjonX, posisjonY)
-
-
-class Hero2(object):
-
-    def __init__(self, boardXLength, boardYLength):
-        self.boardXLength = boardXLength
-        self.boardYLength = boardYLength
-
-
-    def moveRight(self, posisjonX, posisjonY, length):
-        if not posisjonX + length > self.boardXLength:
-            print("Moving from %d, %d, to %d, %d" % (posisjonX, posisjonY,
-            posisjonX+length, posisjonY))
-            return posisjonX + length, posisjonY
-        else:
-            print("Couldn't move, would go off the board")
-
-
-    def moveRight2(self, position, length):
-        if not position[0] + length > self.boardXLength:
-            print("Moving")
-            return (position[0] + length, position[1])
-
-
-class Hero3(object):
-
-    def __init__(self, position, maxX, maxY):
+    def __init__(self, position, maxStr):
         self.position = position
-        self.maxX = maxX
-        self.maxY = maxY
+        self.maxStr = maxStr
 
     def moveRight(self, length):
-        if not self.position[0] + length > self.maxX:
+        if not self.position[0] + length > self.maxStr:
             self.position = self.position[0] + length, self.position[1]
             print("New position: %d, %d" %(self.position))
             self.printPosition()
@@ -49,9 +14,9 @@ class Hero3(object):
 
     def printPosition(self):
         self.printXLine()
-        for x in range(0, self.maxX):
+        for x in range(0, self.maxStr):
             oneLine = ""
-            for y in range(0, self.maxY):
+            for y in range(0, self.maxStr):
                 if self.position == (y, x):
                     oneLine += "| * "
                 else:
@@ -63,7 +28,7 @@ class Hero3(object):
 
     def printXLine(self):
         oneLine = ""
-        for i in range(0, self.maxX):
+        for i in range(0, self.maxStr):
             oneLine += "+---"
         oneLine += "+"
         print(oneLine)
